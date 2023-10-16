@@ -39,7 +39,7 @@ userRoutes.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Authentication failed' });
     }
     const token = jwt.sign({ userId: user._id,username: username}, process.env.sectretKey);
-    res.status(200).json({ token:token,msg:"Login Succersfully" });
+    res.status(200).json({ token:token,msg:"Login Succersfully",logindata:req.body });
    
   } catch (error) {
     res.status(500).json({ message: 'Failed to authenticate' });
